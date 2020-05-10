@@ -1,13 +1,46 @@
 <template>
-  <form>
-    <input type="text" placeholder="Search Users..." class="search-box" />
-    <input type="submit" value="Submit" class="search-btn" />
-  </form>
+  <div>
+    <section v-if="alertStatus">
+      <Alert />
+    </section>
+    <form @submit="onSubmit">
+      <input type="text" placeholder="Search Users..." class="search-box" v-model="text" />
+      <input type="submit" value="Submit" class="search-btn" />
+    </form>
+  </div>
 </template>
 
 <script>
+import { mapActions } from "vuex";
+
+import Alert from "../layout/Alert";
+
 export default {
-  name: "Search"
+  name: "Search",
+  components: {
+    Alert
+  },
+  data() {
+    return {
+      text: "",
+      alertStatus: false
+    };
+  },
+  methods: {
+    ...mapActions(["searchUsers"]),
+    onSubmit(e) {
+      e.preventDefault();
+      if (this.text == "") {
+        this.alertStatus = true;
+        setTimeout(() => {
+          this.alertStatus = false;
+        }, 2500);
+      } else {
+        this.searchUsers(this.text);
+        this.text = "";
+      }
+    }
+  }
 };
 </script>
 
@@ -23,6 +56,10 @@ input {
   font-size: 14px;
 }
 
+input:focus {
+  outline: none;
+}
+
 .search-box {
   padding: 10px;
   background-color: rgb(242, 253, 238);
@@ -32,10 +69,10 @@ input {
   background-color: #173149;
   color: white;
   cursor: pointer;
-  border-collapse: #173149;
+  border-color: #173149;
 }
 
 .search-btn:hover {
-  background-color: #173149;
+  background-color: #294866;
 }
 </style>

@@ -3,6 +3,9 @@
     <section v-if="statusLoading">
       <Spinner />
     </section>
+    <section v-if="allUsers.length > 0">
+      <button @click="clearResults">Clear Result</button>
+    </section>
     <UserItem :allUsers="allUsers" :statusLoading="statusLoading" />
   </div>
 </template>
@@ -20,7 +23,7 @@ export default {
     Spinner
   },
   methods: {
-    ...mapActions(["fetchUsers"])
+    ...mapActions(["fetchUsers", "clearResults"])
   },
   computed: {
     ...mapGetters(["allUsers", "statusLoading"])
@@ -31,5 +34,21 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+button {
+  display: block;
+  width: 100%;
+  background-color: #2c3e50;
+  color: white;
+  font-size: 14px;
+  padding: 7px;
+  border: none;
+  border-radius: 3px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #294866;
+}
 </style>

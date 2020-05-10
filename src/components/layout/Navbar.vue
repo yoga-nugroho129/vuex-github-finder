@@ -1,19 +1,21 @@
 <template>
   <nav>
-    <h2>
-      <i class="fab fa-github"></i> Github Finder
-    </h2>
+    <h2><i class="fab fa-github"></i> Github Finder</h2>
     <ul>
-      <li>Home</li>
-      <li>About</li>
+      <li>
+        <router-link to="/">Home</router-link>
+      </li>
+      <li>
+        <router-link to="/about">About</router-link>
+      </li>
     </ul>
   </nav>
 </template>
 
 <script>
 export default {
-  name: "Navbar"
-};
+  name: 'Navbar',
+}
 </script>
 
 <style scoped>
@@ -32,6 +34,25 @@ ul {
 
 li {
   display: inline-block;
-  margin-left: 25px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: #173149;
+  padding: 7px;
+}
+
+a:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  padding: 7px;
+  border-radius: 3px;
+}
+
+.router-link-exact-active {
+  background-color: white;
+  padding: 7px;
+  border-radius: 3px;
 }
 </style>

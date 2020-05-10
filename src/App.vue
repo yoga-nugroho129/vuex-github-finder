@@ -2,25 +2,22 @@
   <div id="app">
     <Navbar />
     <div class="container">
-      <Search />
-      <UserList />
+      <keep-alive>
+        <router-view></router-view>
+      </keep-alive>
     </div>
   </div>
 </template>
 
 <script>
-import Navbar from "./components/layout/Navbar";
-import Search from "./components/user/Search";
-import UserList from "./components/user/UserList";
+import Navbar from './components/layout/Navbar'
 
 export default {
-  name: "App",
+  name: 'App',
   components: {
     Navbar,
-    Search,
-    UserList
-  }
-};
+  },
+}
 </script>
 
 <style>

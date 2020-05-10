@@ -3,7 +3,7 @@
     <section v-for="user in allUsers" :key="user.id">
       <img :src="user.avatar_url" alt="user-img" />
       <p>{{user.login}}</p>
-      <button>More</button>
+      <button @click="tes($event)">More</button>
     </section>
   </div>
 </template>
@@ -14,6 +14,11 @@ export default {
   props: {
     allUsers: Array,
     statusLoading: Boolean
+  },
+  methods: {
+    tes(e) {
+      console.log(e);
+    }
   }
 };
 </script>
