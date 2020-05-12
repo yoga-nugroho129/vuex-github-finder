@@ -2,7 +2,7 @@
   <div id="app">
     <Navbar />
     <div class="container">
-      <keep-alive>
+      <keep-alive :exclude="['UserDetails']">
         <router-view></router-view>
       </keep-alive>
     </div>
@@ -10,14 +10,14 @@
 </template>
 
 <script>
-import Navbar from './components/layout/Navbar'
+import Navbar from "./components/layout/Navbar";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    Navbar,
-  },
-}
+    Navbar
+  }
+};
 </script>
 
 <style>

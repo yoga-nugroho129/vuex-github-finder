@@ -3,7 +3,9 @@
     <section v-for="user in allUsers" :key="user.id">
       <img :src="user.avatar_url" alt="user-img" />
       <p>{{user.login}}</p>
-      <button @click="tes($event)">More</button>
+      <router-link :to="`/user/${user.login}`">
+        <button>More</button>
+      </router-link>
     </section>
   </div>
 </template>
@@ -14,22 +16,29 @@ export default {
   props: {
     allUsers: Array,
     statusLoading: Boolean
-  },
-  methods: {
-    tes(e) {
-      console.log(e);
-    }
   }
 };
 </script>
 
 <style scoped>
-.card {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 1rem;
-  text-align: center;
-  align-self: baseline;
+@media (min-width: 700px) {
+  .card {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1rem;
+    align-self: baseline;
+    text-align: center;
+  }
+}
+
+@media (max-width: 699px) {
+  .card {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
+    align-self: baseline;
+    text-align: center;
+  }
 }
 
 section {
